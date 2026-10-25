@@ -11,33 +11,32 @@ are published automatically by that repository's CI.
 **macOS / Linux**
 
 ```sh
-curl -fsSL https://get.withpotter.com/box.sh | sh
+curl -fsSL https://github.com/withpotter/box-distribution/releases/latest/download/install.sh | sh
 ```
 
 **Windows (PowerShell)**
 
 ```powershell
-irm https://get.withpotter.com/box.ps1 | iex
+irm https://github.com/withpotter/box-distribution/releases/latest/download/install.ps1 | iex
 ```
 
-**Homebrew**
-
-```sh
-brew install withpotter/tap/box
-```
-
-All three methods download the published release assets from this repository.
+Both installers download the published release assets from this repository.
 Box runs on your existing Node.js (20+); the installers do not install Node for
 you.
+
+## Guides
+
+- [Designing website templates with `box design`](USAGE.md) — create, preview
+  and check a template (alpha).
 
 ## What's in a release
 
 Each `v<version>` release attaches:
 
-- `withpotter-box-<version>.tgz` — npm tarball used by the curl / PowerShell
-  installers (`npm install -g <tgz>`).
-- `box-bundle-<version>.tar.gz` — self-contained bundle (vendored dependencies)
-  used by the Homebrew cask.
+- `install.sh` / `install.ps1` — the installers above.
+- `withpotter-box-<version>.tgz` — npm tarball used by the installers
+  (`npm install -g <tgz>`).
+- `box-bundle-<version>.tar.gz` — self-contained bundle (vendored dependencies).
 
 ## Support
 

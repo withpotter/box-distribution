@@ -64,6 +64,24 @@ box design dev --port 4000
 made-up business, so you see a realistic filled-in site without any backend.
 Edit a file under `src/` and the page reloads.
 
+## What a new template already does for you
+
+You do not have to build these; they work from the first run, and the contract
+tests in `test/contract/` fail `check` if a change breaks one:
+
+- **Fonts.** The site owner picks the typefaces, and can give any one text its
+  own. Draw owner-editable words with the SDK's `Text` and `Link` so the pick
+  applies. A design that must keep its own type can opt out with
+  `customFonts: false` and a reason.
+- **Footer.** `<SiteFooter>` draws the brand, contact lines, social icons, link
+  columns, legal links and the small print. Change a part by passing it as a
+  prop; do not write a footer from scratch.
+- **Pictures.** Print every picture with `Picture`, so an empty slot is still
+  clickable in the editor. A bundled fallback shows until the owner uploads one.
+- **Colours and buttons** reach the page as the platform expects.
+
+The guides inside the generated project (`AGENT.md` first) explain each one.
+
 ## 4. How a template is laid out
 
 | Path | What it is |
@@ -173,8 +191,10 @@ and review the diff before keeping it.
   engine is not part of this download, so this is for people we have given
   access to it.
 - `box design unpublish <id> --local --engine <dir>` removes it again.
-- `box design setup [--control-plane <url>]` stores the control-plane address
-  for when hosted publishing arrives. `box design legal` shows the legal notice.
+- `box design setup` and `box design legal` are for the legal documents an
+  author will accept before publishing to the hosted platform. That service is
+  **not available yet**, so both fail with an HTTP 403 today. You do not need
+  them to build, check or run a template.
 
 Until then, the useful loop is `new` → `dev` → `check`: you can design a
 complete, verified template and keep it in your own repository.
@@ -187,8 +207,9 @@ complete, verified template and keep it in your own repository.
   site and click through your fields.
 - **The SDK is copied into the project** (`vendor/`) and there is no upgrade
   command yet. A template keeps the SDK version it was created with.
-- **Marketing and brochure sites only.** Content comes in as pages, sections
-  and fields; there are no hooks for carts, bookings or live data.
+- **Stores need the platform.** Content comes in as pages, sections and fields.
+  A shop template's cart, checkout and member area go through the platform's
+  own operations, so you can only try them with the mock tenant, not live data.
 
 ## Troubleshooting
 
